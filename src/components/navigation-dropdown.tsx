@@ -22,13 +22,16 @@ import {
 import { Icon } from './icon';
 import { gravatar } from '@/types/avatar';
 import NavigationDropdownTheme from './navigation-dropdown-theme';
+import { AuthenticatedUserType } from '@/types';
+import { Logout } from './auth';
 
-export default function NavigationDropdown() {
+export default function NavigationDropdown({ user }: { user: AuthenticatedUserType }) {
+    // console.log(user);
     return (
         <DropdownMenu>
             <DropdownMenuTrigger className='relative select-none outline-none'>
                 <Avatar className='h-[2.7rem] w-[2.7rem]'>
-                    <AvatarImage src={gravatar('mariomad2296@gmail.com')} />
+                    <AvatarImage src={gravatar(user.email)} />
                     <AvatarFallback>{'M'}</AvatarFallback>
                 </Avatar>
             </DropdownMenuTrigger>
@@ -37,20 +40,20 @@ export default function NavigationDropdown() {
                     <Profile>
                         <ProfileHeader>
                             <ProfileAvatar>
-                                <ProfileImage src={gravatar('mariomad2296@gmail.com')} />
+                                <ProfileImage src={gravatar(user.email)} />
                                 <ProfileFallback>{'M'}</ProfileFallback>
                             </ProfileAvatar>
                         </ProfileHeader>
                         <ProfileContent>
-                            <ProfileName>{'Mario'}</ProfileName>
-                            <ProfileAdditional>{'mariomad2296@gmail.com'}</ProfileAdditional>
+                            <ProfileName>{user.name}</ProfileName>
+                            <ProfileAdditional>{user.email}</ProfileAdditional>
                         </ProfileContent>
                     </Profile>
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
                     <DropdownMenuItem asChild>
-                        <Link href='#'>
+                        <Link href='/dashboard'>
                             <Icon name='IconDashboard' className='mr-2' />
                             Dashboard
                         </Link>
@@ -66,10 +69,7 @@ export default function NavigationDropdown() {
                 <NavigationDropdownTheme />
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
-                    <DropdownMenuItem>
-                        <Icon name='IconLogout2' className='mr-2' />
-                        Logout
-                    </DropdownMenuItem>
+                    <Logout />
                 </DropdownMenuGroup>
             </DropdownMenuContent>
         </DropdownMenu>

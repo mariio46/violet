@@ -2,10 +2,10 @@
 
 import { cn } from '@/lib/utils';
 import type { Route } from 'next';
-import Link from 'next/link';
+import Link, { LinkProps } from 'next/link';
 import { usePathname } from 'next/navigation';
 
-interface NavLinkType {
+interface NavLinkType extends LinkProps {
     href: Route | URL;
     className?: string;
     children: React.ReactNode;
