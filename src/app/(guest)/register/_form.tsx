@@ -1,14 +1,14 @@
 'use client';
 
-import { useToast } from '@/components/ui/use-toast';
-import { useRouter } from 'next/navigation';
-import React, { SyntheticEvent, useState } from 'react';
-import axios from 'axios';
-import { Label } from '@/components/ui/label';
-import { Input } from '@/components/ui/input';
 import { Button, buttonVariants } from '@/components/ui/button';
-import Link from 'next/link';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { useToast } from '@/components/ui/use-toast';
 import useLoading from '@/hooks/useLoading';
+import axios from 'axios';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { SyntheticEvent, useState } from 'react';
 
 export default function RegisterForm() {
     const { loading, startLoading, stopLoading } = useLoading();
